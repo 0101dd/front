@@ -8,9 +8,13 @@
         b-navbar-nav.ml-auto
           b-nav-item(v-if="!user.isLogin" to='/register') 註冊
           b-nav-item(v-if="!user.isLogin" to='/login') 登入
+          b-nav-item(v-if="user.isLogin" to='/cart')
+            | 購物車
+            b-badge(variant='danger') {{ user.cart }}
+          b-nav-item(v-if="user.isLogin" to='/orders') 訂單
           b-nav-item(v-if="user.isLogin && user.isAdmin" to='/admin') 管理
           b-nav-item(v-if="user.isLogin" @click="logout") 登出
-  router-view
+  router-view(:key='$route.fullPath')
 </template>
 
 <script>

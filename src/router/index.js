@@ -31,6 +31,32 @@ const routes = [
     }
   },
   {
+    path: '/product/:id',
+    name: 'Product',
+    component: () => import(/* webpackChunkName: "product" */ '../views/Product.vue'),
+    meta: {
+      title: '商品 | 購物網'
+    }
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: () => import(/* webpackChunkName: "cart" */ '../views/Cart.vue'),
+    meta: {
+      title: '購物車 | 購物網',
+      login: true
+    }
+  },
+  {
+    path: '/orders',
+    name: 'Orders',
+    component: () => import(/* webpackChunkName: "orders" */ '../views/Orders.vue'),
+    meta: {
+      title: '訂單 | 購物網',
+      login: true
+    }
+  },
+  {
     path: '/admin',
     name: 'Admin',
     component: () => import(/* webpackChunkName: "admin" */ '../views/Admin.vue'),
@@ -66,6 +92,11 @@ const routes = [
         }
       }
     ]
+  },
+  {
+    path: '*',
+    name: 'NotFound',
+    redirect: '/'
   }
 ]
 
